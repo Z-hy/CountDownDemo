@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iDV-hw-LZq">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="tTw-Nj-cRa">
+            <objects>
+                <navigationController id="iDV-hw-LZq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C8O-Xx-fMG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="SHy-zC-Neh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P3T-Bw-wtl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-344" y="322"/>
+        </scene>
+        <!--First-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="CountdownDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQy-aR-LnO">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CUr-Sv-SPQ" kind="show" id="Rqp-aa-p0d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="rQy-aR-LnO" secondAttribute="centerX" id="S0l-iv-qIe"/>
+                            <constraint firstAttribute="centerY" secondItem="rQy-aR-LnO" secondAttribute="centerY" id="kwr-tn-AKm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="First" id="DdE-ox-khf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Second-->
+        <scene sceneID="gfk-pd-DC5">
+            <objects>
+                <viewController id="CUr-Sv-SPQ" customClass="SecondViewController" customModule="CountdownDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BFN-Zf-9Ym"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Gc-Jz-lBN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ilK-XK-6Ux">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xn8-vp-JsR" customClass="CountDownView" customModule="CountdownDemo" customModuleProvider="target">
+                                <rect key="frame" x="253" y="285" width="90" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="l6a-aC-e1h"/>
+                                    <constraint firstAttribute="height" constant="30" id="zea-v1-zJC"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeO-K0-g3F">
+                                <rect key="frame" x="277" y="334" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="SIF-3V-ECl" kind="show" id="qMg-4n-lWk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="qeO-K0-g3F" secondAttribute="centerX" id="OOa-Nu-59B"/>
+                            <constraint firstAttribute="centerX" secondItem="xn8-vp-JsR" secondAttribute="centerX" constant="2" id="Sjm-VN-BmR"/>
+                            <constraint firstAttribute="centerY" secondItem="xn8-vp-JsR" secondAttribute="centerY" id="hth-6q-c3g"/>
+                            <constraint firstItem="qeO-K0-g3F" firstAttribute="top" secondItem="xn8-vp-JsR" secondAttribute="bottom" constant="19" id="tHw-dl-vl1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Second" id="Cbn-1l-cxN"/>
+                    <connections>
+                        <outlet property="countDownBtn" destination="xn8-vp-JsR" id="MPC-Fq-Gh6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XXu-CJ-DHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091" y="322"/>
+        </scene>
+        <!--Third-->
+        <scene sceneID="Ofh-zG-FDR">
+            <objects>
+                <viewController id="SIF-3V-ECl" customClass="ThirdViewController" customModule="CountdownDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VBA-ie-8Ld"/>
+                        <viewControllerLayoutGuide type="bottom" id="ho6-m0-5gO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="efY-X1-BVZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Third" id="TCR-9E-LVz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QdN-3J-SI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="322"/>
+        </scene>
+    </scenes>
+</document>
