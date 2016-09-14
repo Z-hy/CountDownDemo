@@ -40,7 +40,7 @@ class CountDownView: UIView {
         countDownBtn = UIButton(type: UIButtonType.Custom)
         countDownBtn.frame = CGRectMake(0, 0, frame.size.width, frame.size.height)
         countDownBtn.backgroundColor = UIColor.clearColor()
-        countDownBtn.addTarget(self, action: "countDownButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        countDownBtn.addTarget(self, action: #selector(CountDownView.countDownButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(countDownBtn) 
     }
     
@@ -64,14 +64,14 @@ class CountDownView: UIView {
     //初始化计时器
     func initTimer() {
         if countDownTimer == nil {
-            countDownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timeCountDown", userInfo: nil, repeats: true)
+            countDownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(CountDownView.timeCountDown), userInfo: nil, repeats: true)
             countDownBtn.enabled = false
         }
     }
     
     //倒计时
     func timeCountDown() {
-        time--
+        time -= 1
         showLabel.text = "\(time)s"
         print("\(time)")
         if time == 0 {
