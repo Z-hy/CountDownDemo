@@ -111,17 +111,19 @@ class CountDownView: UIView {
     
     //计算剩余时间
     func calculatorTheTime() {
-        let outTime = NSUserDefaults.standardUserDefaults().objectForKey("kOutTime") as! Int
-        let inTime = getTheInTime()
-        let countTime = NSUserDefaults.standardUserDefaults().objectForKey("kCountDownTime")as! Int
-        if inTime - outTime > countTime {
-            countDownBtn.enabled = true
-            showLabel.text = "重新获取"
-        } else {
-            countDownBtn.enabled = false
-            time = countTime - (inTime - outTime)
-            showLabel.text = "\(time)s"
-            initTimer()
+        if let outTime = NSUserDefaults.standardUserDefaults().objectForKey("kOutTime") {
+            let oTime = outTime as! Int
+            let inTime = getTheInTime()
+            let countTime = NSUserDefaults.standardUserDefaults().objectForKey("kCountDownTime")as! Int
+            if inTime - oTime > countTime {
+                countDownBtn.enabled = true
+                showLabel.text = "重新获取"
+            } else {
+                countDownBtn.enabled = false
+                time = countTime - (inTime - oTime)
+                showLabel.text = "\(time)s"
+                initTimer()
+            }
         }
     }
 }
