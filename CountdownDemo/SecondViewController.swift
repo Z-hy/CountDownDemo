@@ -12,14 +12,14 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var countDownBtn: CountDownView!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if countDownBtn != nil {
             countDownBtn.viewIn()
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if countDownBtn != nil {
             countDownBtn.viewOut()

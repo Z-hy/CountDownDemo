@@ -17,34 +17,34 @@ class CountDownView: UIView {
     
     var countDownBtn: UIButton!
     var showLabel: UILabel!
-    var countDownTimer: NSTimer!
+    var countDownTimer: Timer!
     var staticTime: Int!
     var time = 30
     var countDownDelegate: CountDownViewDelegate?
     
-    func initFrame(frame: CGRect, time: Int) {
+    func initFrame(_ frame: CGRect, time: Int) {
         initUI(frame)
         staticTime = time
         self.time = time
     }
     
-    func initUI(frame: CGRect) {
+    func initUI(_ frame: CGRect) {
         //
-        showLabel = UILabel(frame: CGRectMake(0, 0, frame.size.width, frame.size.height))
+        showLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         showLabel.text = "重新获取"
-        showLabel.textColor = UIColor.lightGrayColor()
-        showLabel.font = UIFont.systemFontOfSize(14.0)
-        showLabel.textAlignment = NSTextAlignment.Center
+        showLabel.textColor = UIColor.lightGray
+        showLabel.font = UIFont.systemFont(ofSize: 14.0)
+        showLabel.textAlignment = NSTextAlignment.center
         self.addSubview(showLabel)
         //
-        countDownBtn = UIButton(type: UIButtonType.Custom)
-        countDownBtn.frame = CGRectMake(0, 0, frame.size.width, frame.size.height)
-        countDownBtn.backgroundColor = UIColor.clearColor()
-        countDownBtn.addTarget(self, action: "countDownButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        countDownBtn = UIButton(type: UIButtonType.custom)
+        countDownBtn.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        countDownBtn.backgroundColor = UIColor.clear
+        countDownBtn.addTarget(self, action: #selector(CountDownView.countDownButtonAction(_:)), for: UIControlEvents.touchUpInside)
         self.addSubview(countDownBtn) 
     }
     
-    func countDownButtonAction(sender: UIButton) {
+    func countDownButtonAction(_ sender: UIButton) {
         initTimer()
         if countDownDelegate != nil {
             countDownDelegate?.countDownButtonAciton()
@@ -64,18 +64,18 @@ class CountDownView: UIView {
     //初始化计时器
     func initTimer() {
         if countDownTimer == nil {
-            countDownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timeCountDown", userInfo: nil, repeats: true)
-            countDownBtn.enabled = false
+            countDownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(CountDownView.timeCountDown), userInfo: nil, repeats: true)
+            countDownBtn.isEnabled = false
         }
     }
     
     //倒计时
     func timeCountDown() {
-        time--
+        time -= 1
         showLabel.text = "\(time)s"
         print("\(time)")
         if time == 0 {
-            countDownBtn.enabled = true
+            countDownBtn.isEnabled = true
             time = staticTime
             stopCountDown()
             showLabel.text = "重新获取"
@@ -92,34 +92,34 @@ class CountDownView: UIView {
     
     //记录推出界面时间
     func getTheOutTime() {
-        let date = NSDate().timeIntervalSince1970
-        NSUserDefaults.standardUserDefaults().setObject(Int(date), forKey: "kOutTime")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        let date = Date().timeIntervalSince1970
+        UserDefaults.standard.set(Int(date), forKey: "kOutTime")
+        UserDefaults.standard.synchronize()
     }
     
     //记录进入界面时间
     func getTheInTime() -> Int {
-        let date = NSDate().timeIntervalSince1970
+        let date = Date().timeIntervalSince1970
         return Int(date)
     }
     
     //记录倒计时剩余时间
     func getTheCountDownTime() {
-        NSUserDefaults.standardUserDefaults().setObject(time, forKey: "kCountDownTime")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(time, forKey: "kCountDownTime")
+        UserDefaults.standard.synchronize()
     }
     
     //计算剩余时间
     func calculatorTheTime() {
-        if let outTime = NSUserDefaults.standardUserDefaults().objectForKey("kOutTime") {
+        if let outTime = UserDefaults.standard.object(forKey: "kOutTime") {
             let oTime = outTime as! Int
             let inTime = getTheInTime()
-            let countTime = NSUserDefaults.standardUserDefaults().objectForKey("kCountDownTime")as! Int
+            let countTime = UserDefaults.standard.object(forKey: "kCountDownTime")as! Int
             if inTime - oTime > countTime {
-                countDownBtn.enabled = true
+                countDownBtn.isEnabled = true
                 showLabel.text = "重新获取"
             } else {
-                countDownBtn.enabled = false
+                countDownBtn.isEnabled = false
                 time = countTime - (inTime - oTime)
                 showLabel.text = "\(time)s"
                 initTimer()
